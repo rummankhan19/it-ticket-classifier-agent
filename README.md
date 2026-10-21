@@ -40,8 +40,8 @@ cp .env.example .env        # then put your key in .env
 python dev_server.py        # open http://localhost:8000
 ```
 
-Both Google AI Studio keys (`AIza…`) and Vertex AI express-mode keys (`AQ.…`) work; the type is detected
-automatically. Set `GEMINI_MODEL` to use a different Gemini model.
+Uses a Google AI Studio (Gemini API) key. Set `GEMINI_MODEL` to use a different Gemini model, or
+`USE_VERTEXAI=true` for a Vertex AI express-mode key.
 
 To rebuild the knowledge base: `pip install openpyxl && python scripts/build_kb.py`.
 

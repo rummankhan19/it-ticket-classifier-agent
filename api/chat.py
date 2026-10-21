@@ -16,7 +16,9 @@ from google import genai
 from google.genai import types
 
 KB_PATH = Path(__file__).resolve().parent.parent / "data" / "tickets.json"
-MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash")
+FALLBACK_MODEL = os.environ.get("GEMINI_FALLBACK_MODEL", "gemini-3.5-flash-lite")
+TIMEOUT_MS = 25_000
 TOP_K = 5
 MAX_HISTORY = 12
 
@@ -140,12 +142,20 @@ Format classifications as a short markdown list with those six bold labels, then
 
 
 # ---------------------------------------------------------------- LLM
+_CLIENT = None
+
+
 def _client():
-    key = os.environ.get("GEMINI_API_KEY")
-    if not key:
-        raise RuntimeError("GEMINI_API_KEY is not set.")
-    # "AQ." keys are Vertex AI express-mode keys; "AIza" keys are Google AI Studio keys.
-    return genai.Client(vertexai=key.startswith("AQ."), api_key=key)
+    # Keep one long-lived client: the SDK closes its HTTP connection when a Client is garbage-collected.
+    global _CLIENT
+    if _CLIENT is None:
+        key = os.environ.get("GEMINI_API_KEY")
+        if not key:
+            raise RuntimeError("GEMINI_API_KEY is not set.")
+        # Google AI Studio (Gemini API) key; set USE_VERTEXAI=true to use a Vertex AI express-mode key instead.
+        _CLIENT = genai.Client(vertexai=os.environ.get("USE_VERTEXAI", "").lower() == "true", api_key=key,
+                               http_options=types.HttpOptions(timeout=TIMEOUT_MS))
+    return _CLIENT
 
 
 def answer(message, history=None):
@@ -162,11 +172,16 @@ def answer(message, history=None):
     contents.append(types.Content(role="user", parts=[types.Part(
         text=f"Most similar dataset tickets for this question:\n{context}\n\nUser question: {message}")]))
 
-    resp = _client().models.generate_content(
-        model=MODEL,
-        contents=contents,
-        config=types.GenerateContentConfig(system_instruction=SYSTEM_PROMPT, temperature=0.2),
-    )
+    client = _client()
+    try:
+        # Thinking disabled for fast, consistent responses (fits Vercel's function time limit).
+        resp = client.models.generate_content(model=MODEL, contents=contents, config=types.GenerateContentConfig(
+            system_instruction=SYSTEM_PROMPT, temperature=0.2,
+            thinking_config=types.ThinkingConfig(thinking_budget=0)))
+    except Exception:
+        # Primary model busy/unavailable: retry once on the lighter fallback model.
+        resp = client.models.generate_content(model=FALLBACK_MODEL, contents=contents, config=types.GenerateContentConfig(
+            system_instruction=SYSTEM_PROMPT, temperature=0.2))
     return {"reply": resp.text, "sources": [t["id"] for t in matches]}
 
 
