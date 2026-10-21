@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TicketSense – IT Ticket Classifier</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+<style>
+  :root { --bg:#f5f7fb; --panel:#fff; --text:#1c2333; --muted:#667085; --accent:#2f5bea; --user:#2f5bea; --bot:#eef2fb; --border:#e3e8f2; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--text); }
+  .app { max-width:900px; margin:0 auto; height:100vh; display:flex; flex-direction:column; padding:16px; }
+  header { display:flex; align-items:center; gap:12px; padding:12px 4px 16px; }
+  .logo { width:40px; height:40px; border-radius:10px; background:var(--accent); color:#fff; display:grid; place-items:center; font-weight:700; }
+  header h1 { font-size:18px; margin:0; }
+  header p { margin:2px 0 0; font-size:13px; color:var(--muted); }
+  #chat { flex:1; overflow-y:auto; background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:20px; }
+  .msg { display:flex; margin-bottom:14px; }
+  .msg.user { justify-content:flex-end; }
+  .bubble { max-width:78%; padding:10px 14px; border-radius:14px; line-height:1.5; font-size:14.5px; }
+  .user .bubble { background:var(--user); color:#fff; border-bottom-right-radius:4px; white-space:pre-wrap; }
+  .bot .bubble { background:var(--bot); border-bottom-left-radius:4px; }
+  .bot .bubble p { margin:6px 0; } .bot .bubble ul,.bot .bubble ol { margin:6px 0; padding-left:20px; }
+  .sources { margin-top:8px; font-size:12px; color:var(--muted); }
+  .sources span { display:inline-block; background:#fff; border:1px solid var(--border); border-radius:6px; padding:1px 6px; margin:2px 3px 0 0; }
+  .error { color:#b42318; }
+  .suggestions { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 0; }
+  .suggestions button { border:1px solid var(--border); background:var(--panel); color:var(--text); border-radius:999px; padding:6px 12px; font-size:13px; cursor:pointer; }
+  .suggestions button:hover { border-color:var(--accent); color:var(--accent); }
+  form { display:flex; gap:8px; margin-top:12px; }
+  textarea { flex:1; resize:none; border:1px solid var(--border); border-radius:12px; padding:12px; font:inherit; font-size:14.5px; height:52px; }
+  textarea:focus { outline:2px solid var(--accent); border-color:transparent; }
+  button.send { background:var(--accent); color:#fff; border:0; border-radius:12px; padding:0 20px; font-weight:600; cursor:pointer; }
+  button.send:disabled { opacity:.6; cursor:default; }
+  .typing { color:var(--muted); font-style:italic; }
+  @media (max-width:600px){ .bubble{max-width:92%;} }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="logo">TS</div>
+    <div>
+      <h1>TicketSense — IT Support Ticket Classification Agent</h1>
+      <p>Classifies issue type, department, urgency &amp; severity with reasoning, grounded in 100 historical tickets.</p>
+    </div>
+  </header>
+  <div id="chat">
+    <div class="msg bot"><div class="bubble">
+      Hi! Describe an IT support ticket and I'll classify it — <b>Technical vs Non-Technical</b>, <b>department</b>,
+      <b>urgency</b> and <b>Jira severity</b> — and explain why. You can also ask about likely causes, next steps,
+      or the ticket dataset.
+    </div></div>
+    <div class="suggestions" id="suggestions">
+      <button>A production VM is unavailable and multiple users cannot access the application. How should this ticket be classified?</button>
+      <button>What could be the possible cause?</button>
+      <button>A customer was charged twice on their latest invoice.</button>
+      <button>An employee is requesting a new office chair. How urgent is this?</button>
+      <button>We noticed multiple failed logins from an unknown country on the admin account.</button>
+      <button>Which tickets in the dataset belong to Billing?</button>
+    </div>
+  </div>
+  <form id="form">
+    <textarea id="input" placeholder="Describe a ticket or ask a question…" required></textarea>
+    <button class="send" id="send">Send</button>
+  </form>
+</div>
+<script>
+  const chat = document.getElementById('chat'), form = document.getElementById('form'),
+        input = document.getElementById('input'), send = document.getElementById('send');
+  const history = [];
+
+  function add(role, html, sources) {
+    const row = document.createElement('div');
+    row.className = 'msg ' + role;
+    const b = document.createElement('div');
+    b.className = 'bubble';
+    if (role === 'user') b.textContent = html; else b.innerHTML = html;
+    if (sources && sources.length) {
+      const s = document.createElement('div');
+      s.className = 'sources';
+      s.innerHTML = 'Retrieved tickets: ' + sources.map(id => `<span>${id}</span>`).join('');
+      b.appendChild(s);
+    }
+    row.appendChild(b); chat.appendChild(row); chat.scrollTop = chat.scrollHeight;
+    return b;
+  }
+
+  async function ask(text) {
+    document.getElementById('suggestions')?.remove();
+    add('user', text);
+    const pending = add('bot', '<span class="typing">Analysing ticket…</span>');
+    send.disabled = true;
+    try {
+      const res = await fetch('/api/chat', { method:'POST', headers:{'Content-Type':'application/json'},
+                                             body: JSON.stringify({ message:text, history }) });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || res.statusText);
+      pending.parentElement.remove();
+      add('bot', DOMPurify.sanitize(marked.parse(data.reply)), data.sources);
+      history.push({ role:'user', content:text }, { role:'assistant', content:data.reply });
+    } catch (e) {
+      pending.innerHTML = `<span class="error">Error: ${DOMPurify.sanitize(e.message)}</span>`;
+    } finally { send.disabled = false; input.focus(); }
+  }
+
+  form.addEventListener('submit', e => { e.preventDefault(); const t = input.value.trim(); if (t) { input.value=''; ask(t); } });
+  input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); } });
+  document.querySelectorAll('#suggestions button').forEach(b => b.addEventListener('click', () => ask(b.textContent)));
+</script>
+</body>
+</html>

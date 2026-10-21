@@ -1,0 +1,734 @@
+{
+  "tickets": [
+    {
+      "id": "TKT-001",
+      "subject": "Production VM unavailable",
+      "summary": "The production virtual machine is unreachable and the application hosted on it is unavailable.",
+      "department": "Virtual Machine",
+      "date": "2026-10-21"
+    },
+    {
+      "id": "TKT-002",
+      "subject": "VPN connection failed",
+      "summary": "Unable to connect to the corporate VPN from a remote location.",
+      "department": "Network",
+      "date": "2026-10-29"
+    },
+    {
+      "id": "TKT-003",
+      "subject": "Unexpected billing charge",
+      "summary": "The latest invoice contains a charge the customer does not recognize.",
+      "department": "Billing",
+      "date": "2026-10-11"
+    },
+    {
+      "id": "TKT-004",
+      "subject": "Application login error",
+      "summary": "Valid credentials result in a server error when logging into the application.",
+      "department": "Application",
+      "date": "2026-10-25"
+    },
+    {
+      "id": "TKT-005",
+      "subject": "Password reset request",
+      "summary": "The user has forgotten the password and needs access restored.",
+      "department": "Account Access",
+      "date": "2026-10-13"
+    },
+    {
+      "id": "TKT-006",
+      "subject": "DNS resolution failure",
+      "summary": "The internal application cannot resolve the hostname of a required service.",
+      "department": "DNS",
+      "date": "2026-10-24"
+    },
+    {
+      "id": "TKT-007",
+      "subject": "Office equipment request",
+      "summary": "An employee is requesting a replacement office chair.",
+      "department": "Administration",
+      "date": "2026-10-15"
+    },
+    {
+      "id": "TKT-008",
+      "subject": "Database connection timeout",
+      "summary": "The application is intermittently unable to connect to the production database.",
+      "department": "Database",
+      "date": "2026-11-08"
+    },
+    {
+      "id": "TKT-009",
+      "subject": "Subscription cancellation query",
+      "summary": "The customer wants information about cancelling their subscription.",
+      "department": "Billing",
+      "date": "2026-10-13"
+    },
+    {
+      "id": "TKT-010",
+      "subject": "Suspicious login activity",
+      "summary": "Multiple login attempts were detected from an unfamiliar location.",
+      "department": "Security",
+      "date": "2026-10-13"
+    },
+    {
+      "id": "TKT-011",
+      "subject": "Application running slowly",
+      "summary": "The reporting application takes several minutes to load reports.",
+      "department": "Application",
+      "date": "2026-11-06"
+    },
+    {
+      "id": "TKT-012",
+      "subject": "Server disk space warning",
+      "summary": "Server disk utilization has reached 88 percent and monitoring generated a warning.",
+      "department": "Server / Storage",
+      "date": "2026-10-07"
+    },
+    {
+      "id": "TKT-013",
+      "subject": "Employment document request",
+      "summary": "An employee needs a copy of an employment-related document.",
+      "department": "HR",
+      "date": "2026-10-19"
+    },
+    {
+      "id": "TKT-014",
+      "subject": "Firewall blocking traffic",
+      "summary": "A firewall rule is blocking traffic between an application and an internal service.",
+      "department": "Network / Firewall",
+      "date": "2026-10-14"
+    },
+    {
+      "id": "TKT-015",
+      "subject": "Reporting filter question",
+      "summary": "A user wants guidance on how to apply a date filter in the reporting application.",
+      "department": "Application",
+      "date": "2026-11-10"
+    },
+    {
+      "id": "TKT-016",
+      "subject": "Administrative record update",
+      "summary": "An employee needs a non-technical administrative record updated.",
+      "department": "Administration",
+      "date": "2026-10-17"
+    },
+    {
+      "id": "TKT-017",
+      "subject": "Shared drive inaccessible",
+      "summary": "A user can no longer access a shared team folder that previously worked.",
+      "department": "File Access",
+      "date": "2026-10-18"
+    },
+    {
+      "id": "TKT-018",
+      "subject": "Production API unavailable",
+      "summary": "A critical production API is returning errors for all requests.",
+      "department": "API / Application",
+      "date": "2026-10-14"
+    },
+    {
+      "id": "TKT-019",
+      "subject": "Billing statement request",
+      "summary": "A customer needs a copy of the latest billing statement.",
+      "department": "Billing",
+      "date": "2026-10-27"
+    },
+    {
+      "id": "TKT-020",
+      "subject": "Account repeatedly locked",
+      "summary": "An employee account is being locked several times a day.",
+      "department": "Security / Identity",
+      "date": "2026-10-19"
+    },
+    {
+      "id": "TKT-021",
+      "subject": "Development VM slow",
+      "summary": "The development VM is responding slowly and builds are taking longer than normal.",
+      "department": "Virtual Machine",
+      "date": "2026-10-30"
+    },
+    {
+      "id": "TKT-022",
+      "subject": "Wi-Fi connection issue",
+      "summary": "An employee laptop cannot connect to the corporate Wi-Fi.",
+      "department": "Network / Wi-Fi",
+      "date": "2026-11-06"
+    },
+    {
+      "id": "TKT-023",
+      "subject": "Invoice payment failed",
+      "summary": "A customer reports that payment for an invoice failed.",
+      "department": "Billing / Payment",
+      "date": "2026-10-22"
+    },
+    {
+      "id": "TKT-024",
+      "subject": "Application deployment failed",
+      "summary": "The latest production application deployment failed.",
+      "department": "Application / Deployment",
+      "date": "2026-10-07"
+    },
+    {
+      "id": "TKT-025",
+      "subject": "MFA device unavailable",
+      "summary": "The user cannot complete multi-factor authentication because the registered device is unavailable.",
+      "department": "Identity / MFA",
+      "date": "2026-10-28"
+    },
+    {
+      "id": "TKT-026",
+      "subject": "High CPU utilization",
+      "summary": "A production server has sustained CPU utilization above 95 percent.",
+      "department": "Server / Monitoring",
+      "date": "2026-10-23"
+    },
+    {
+      "id": "TKT-027",
+      "subject": "High memory utilization",
+      "summary": "A production server is consistently above 90 percent memory utilization.",
+      "department": "Server / Monitoring",
+      "date": "2026-11-10"
+    },
+    {
+      "id": "TKT-028",
+      "subject": "Backup job failed",
+      "summary": "The nightly production database backup failed.",
+      "department": "Backup / Database",
+      "date": "2026-10-10"
+    },
+    {
+      "id": "TKT-029",
+      "subject": "File restore request",
+      "summary": "A user needs an older version of a document restored from backup.",
+      "department": "Backup / File Recovery",
+      "date": "2026-10-20"
+    },
+    {
+      "id": "TKT-030",
+      "subject": "Phishing email reported",
+      "summary": "An employee received a suspicious email requesting account credentials.",
+      "department": "Security / Email",
+      "date": "2026-11-10"
+    },
+    {
+      "id": "TKT-031",
+      "subject": "Access request",
+      "summary": "A new employee needs access to an internal application.",
+      "department": "Access Management",
+      "date": "2026-10-10"
+    },
+    {
+      "id": "TKT-032",
+      "subject": "Incorrect permissions",
+      "summary": "A user has access to a restricted application area outside their role.",
+      "department": "Access Management",
+      "date": "2026-10-10"
+    },
+    {
+      "id": "TKT-033",
+      "subject": "Email delivery failure",
+      "summary": "Messages sent by the internal application are not reaching recipients.",
+      "department": "Email / Application",
+      "date": "2026-10-12"
+    },
+    {
+      "id": "TKT-034",
+      "subject": "Mailbox storage full",
+      "summary": "A user's mailbox has reached its storage limit.",
+      "department": "Email",
+      "date": "2026-10-09"
+    },
+    {
+      "id": "TKT-035",
+      "subject": "Application timeout",
+      "summary": "Users receive timeout errors while loading a business application.",
+      "department": "Application",
+      "date": "2026-10-08"
+    },
+    {
+      "id": "TKT-036",
+      "subject": "Server restart required",
+      "summary": "A non-production service needs to be restarted after configuration changes.",
+      "department": "Server / Service",
+      "date": "2026-10-09"
+    },
+    {
+      "id": "TKT-037",
+      "subject": "Network latency issue",
+      "summary": "Users are experiencing unusually high latency while accessing an internal service.",
+      "department": "Network",
+      "date": "2026-11-08"
+    },
+    {
+      "id": "TKT-038",
+      "subject": "VPN credentials rejected",
+      "summary": "Correct VPN credentials are being rejected during authentication.",
+      "department": "Network / VPN",
+      "date": "2026-10-08"
+    },
+    {
+      "id": "TKT-039",
+      "subject": "Broken application link",
+      "summary": "A link inside the internal portal leads to an unavailable page.",
+      "department": "Application",
+      "date": "2026-11-05"
+    },
+    {
+      "id": "TKT-040",
+      "subject": "Database storage nearly full",
+      "summary": "Database storage utilization has reached a critical threshold.",
+      "department": "Database / Storage",
+      "date": "2026-10-14"
+    },
+    {
+      "id": "TKT-041",
+      "subject": "Refund status request",
+      "summary": "A customer wants an update on a previously approved refund.",
+      "department": "Billing / Refund",
+      "date": "2026-10-25"
+    },
+    {
+      "id": "TKT-042",
+      "subject": "Duplicate invoice",
+      "summary": "A customer believes the same invoice was generated twice.",
+      "department": "Billing",
+      "date": "2026-10-10"
+    },
+    {
+      "id": "TKT-043",
+      "subject": "Office access badge replacement",
+      "summary": "An employee needs a replacement office access badge.",
+      "department": "Administration",
+      "date": "2026-10-27"
+    },
+    {
+      "id": "TKT-044",
+      "subject": "Leave policy question",
+      "summary": "An employee has a question about the company's leave policy.",
+      "department": "HR",
+      "date": "2026-10-10"
+    },
+    {
+      "id": "TKT-045",
+      "subject": "Payroll document request",
+      "summary": "An employee needs a copy of a previous payroll document.",
+      "department": "HR",
+      "date": "2026-10-10"
+    },
+    {
+      "id": "TKT-046",
+      "subject": "Production service outage",
+      "summary": "A critical internal service is completely unavailable to users.",
+      "department": "Application / Service",
+      "date": "2026-11-05"
+    },
+    {
+      "id": "TKT-047",
+      "subject": "Application configuration issue",
+      "summary": "A configuration change caused an application feature to stop working.",
+      "department": "Application",
+      "date": "2026-10-19"
+    },
+    {
+      "id": "TKT-048",
+      "subject": "Server reboot required",
+      "summary": "A production server requires a controlled reboot due to an operating system issue.",
+      "department": "Server",
+      "date": "2026-11-08"
+    },
+    {
+      "id": "TKT-049",
+      "subject": "Firewall access request",
+      "summary": "A technical team needs a new firewall rule to allow application traffic.",
+      "department": "Network / Firewall",
+      "date": "2026-10-31"
+    },
+    {
+      "id": "TKT-050",
+      "subject": "Network connectivity lost",
+      "summary": "A branch office cannot connect to the internal corporate network.",
+      "department": "Network",
+      "date": "2026-11-08"
+    },
+    {
+      "id": "TKT-051",
+      "subject": "Customer billing clarification",
+      "summary": "The customer wants clarification about charges on their monthly invoice.",
+      "department": "Billing",
+      "date": "2026-11-01"
+    },
+    {
+      "id": "TKT-052",
+      "subject": "Subscription upgrade question",
+      "summary": "A customer wants to know the process for upgrading their subscription.",
+      "department": "Billing / Subscription",
+      "date": "2026-10-15"
+    },
+    {
+      "id": "TKT-053",
+      "subject": "Application permission error",
+      "summary": "A user receives a permission error when opening a required application feature.",
+      "department": "Application / Access",
+      "date": "2026-10-21"
+    },
+    {
+      "id": "TKT-054",
+      "subject": "Database authentication failed",
+      "summary": "The application cannot authenticate against the database.",
+      "department": "Database",
+      "date": "2026-11-10"
+    },
+    {
+      "id": "TKT-055",
+      "subject": "Database unavailable",
+      "summary": "The production database is not accepting new connections.",
+      "department": "Database",
+      "date": "2026-10-31"
+    },
+    {
+      "id": "TKT-056",
+      "subject": "Server certificate expired",
+      "summary": "An expired certificate is causing HTTPS requests to fail.",
+      "department": "Security / Infrastructure",
+      "date": "2026-10-15"
+    },
+    {
+      "id": "TKT-057",
+      "subject": "SSL certificate warning",
+      "summary": "Users are receiving certificate warnings when opening an internal website.",
+      "department": "Security / Infrastructure",
+      "date": "2026-10-12"
+    },
+    {
+      "id": "TKT-058",
+      "subject": "Malware alert",
+      "summary": "Endpoint security detected potentially malicious activity on an employee workstation.",
+      "department": "Security",
+      "date": "2026-11-08"
+    },
+    {
+      "id": "TKT-059",
+      "subject": "Unauthorized access attempt",
+      "summary": "Security monitoring detected repeated attempts to access a restricted resource.",
+      "department": "Security",
+      "date": "2026-10-30"
+    },
+    {
+      "id": "TKT-060",
+      "subject": "User cannot access portal",
+      "summary": "A user who previously had access can no longer open the internal portal.",
+      "department": "Account Access",
+      "date": "2026-10-09"
+    },
+    {
+      "id": "TKT-061",
+      "subject": "Password expiry issue",
+      "summary": "The user's password has expired and they cannot complete the password update.",
+      "department": "Account Access",
+      "date": "2026-11-05"
+    },
+    {
+      "id": "TKT-062",
+      "subject": "Single sign-on failure",
+      "summary": "Users receive an authentication error when accessing an SSO-enabled application.",
+      "department": "Identity / SSO",
+      "date": "2026-10-24"
+    },
+    {
+      "id": "TKT-063",
+      "subject": "Slow file transfer",
+      "summary": "Transferring files to an internal server is taking much longer than usual.",
+      "department": "Network / File Transfer",
+      "date": "2026-10-29"
+    },
+    {
+      "id": "TKT-064",
+      "subject": "Packet loss detected",
+      "summary": "Monitoring reports packet loss between two internal network segments.",
+      "department": "Network",
+      "date": "2026-11-04"
+    },
+    {
+      "id": "TKT-065",
+      "subject": "Load balancer health check failing",
+      "summary": "The load balancer reports that one application instance is unhealthy.",
+      "department": "Application / Infrastructure",
+      "date": "2026-10-10"
+    },
+    {
+      "id": "TKT-066",
+      "subject": "Application instance crashed",
+      "summary": "One production application instance stopped unexpectedly.",
+      "department": "Application / Infrastructure",
+      "date": "2026-11-02"
+    },
+    {
+      "id": "TKT-067",
+      "subject": "Container startup failure",
+      "summary": "A production container fails during startup and exits immediately.",
+      "department": "Application / Container",
+      "date": "2026-10-29"
+    },
+    {
+      "id": "TKT-068",
+      "subject": "API authentication failure",
+      "summary": "A service-to-service API request is failing authentication.",
+      "department": "API / Security",
+      "date": "2026-10-29"
+    },
+    {
+      "id": "TKT-069",
+      "subject": "API response time increased",
+      "summary": "API response times have increased significantly during business hours.",
+      "department": "API / Application",
+      "date": "2026-10-21"
+    },
+    {
+      "id": "TKT-070",
+      "subject": "Scheduled job failed",
+      "summary": "A scheduled production job did not run successfully.",
+      "department": "Application / Scheduler",
+      "date": "2026-11-05"
+    },
+    {
+      "id": "TKT-071",
+      "subject": "Report generation failed",
+      "summary": "The reporting system fails when generating a large report.",
+      "department": "Application / Reporting",
+      "date": "2026-11-06"
+    },
+    {
+      "id": "TKT-072",
+      "subject": "Report data missing",
+      "summary": "A scheduled report is generated but some expected data is missing.",
+      "department": "Application / Reporting",
+      "date": "2026-10-19"
+    },
+    {
+      "id": "TKT-073",
+      "subject": "Storage access denied",
+      "summary": "An application receives an access denied error when writing to storage.",
+      "department": "Storage / Access",
+      "date": "2026-10-25"
+    },
+    {
+      "id": "TKT-074",
+      "subject": "Cloud storage unavailable",
+      "summary": "The application cannot access the configured storage bucket.",
+      "department": "Cloud Storage",
+      "date": "2026-11-01"
+    },
+    {
+      "id": "TKT-075",
+      "subject": "Configuration variable missing",
+      "summary": "The application fails to start because a required configuration variable is missing.",
+      "department": "Application / Configuration",
+      "date": "2026-11-02"
+    },
+    {
+      "id": "TKT-076",
+      "subject": "Service health check warning",
+      "summary": "Monitoring reports intermittent health-check failures for a non-critical service.",
+      "department": "Monitoring",
+      "date": "2026-10-11"
+    },
+    {
+      "id": "TKT-077",
+      "subject": "Log storage nearly full",
+      "summary": "The server is approaching its log storage limit.",
+      "department": "Server / Storage",
+      "date": "2026-11-03"
+    },
+    {
+      "id": "TKT-078",
+      "subject": "Application memory leak suspected",
+      "summary": "Memory usage continuously increases until the application becomes unstable.",
+      "department": "Application / Performance",
+      "date": "2026-10-10"
+    },
+    {
+      "id": "TKT-079",
+      "subject": "CPU spike after deployment",
+      "summary": "Server CPU usage increased sharply immediately after a new release.",
+      "department": "Application / Performance",
+      "date": "2026-10-07"
+    },
+    {
+      "id": "TKT-080",
+      "subject": "Scheduled maintenance question",
+      "summary": "A user wants to know when planned system maintenance will occur.",
+      "department": "Administration / IT",
+      "date": "2026-10-15"
+    },
+    {
+      "id": "TKT-081",
+      "subject": "New employee onboarding request",
+      "summary": "HR requests setup information for a new employee's onboarding process.",
+      "department": "HR / Administration",
+      "date": "2026-10-28"
+    },
+    {
+      "id": "TKT-082",
+      "subject": "Employee profile update",
+      "summary": "An employee requests an update to a personal administrative record.",
+      "department": "Administration",
+      "date": "2026-11-10"
+    },
+    {
+      "id": "TKT-083",
+      "subject": "Travel reimbursement query",
+      "summary": "An employee wants clarification about a travel reimbursement request.",
+      "department": "Administration / Finance",
+      "date": "2026-10-12"
+    },
+    {
+      "id": "TKT-084",
+      "subject": "Purchase approval status",
+      "summary": "An employee wants to know the status of an office equipment purchase request.",
+      "department": "Administration",
+      "date": "2026-11-07"
+    },
+    {
+      "id": "TKT-085",
+      "subject": "Invoice address correction",
+      "summary": "A customer requests correction of the billing address on an invoice.",
+      "department": "Billing",
+      "date": "2026-10-10"
+    },
+    {
+      "id": "TKT-086",
+      "subject": "Tax information request",
+      "summary": "A customer requests tax-related information for their invoice.",
+      "department": "Billing",
+      "date": "2026-10-13"
+    },
+    {
+      "id": "TKT-087",
+      "subject": "Payment method update",
+      "summary": "A customer wants to update the payment method on their account.",
+      "department": "Billing",
+      "date": "2026-10-19"
+    },
+    {
+      "id": "TKT-088",
+      "subject": "Refund not received",
+      "summary": "A customer reports that an approved refund has not yet appeared.",
+      "department": "Billing / Refund",
+      "date": "2026-10-24"
+    },
+    {
+      "id": "TKT-089",
+      "subject": "Application documentation request",
+      "summary": "A user wants instructions for using an application feature.",
+      "department": "Application",
+      "date": "2026-10-30"
+    },
+    {
+      "id": "TKT-090",
+      "subject": "Feature request",
+      "summary": "A user is requesting a new reporting feature for a future release.",
+      "department": "Application",
+      "date": "2026-10-07"
+    },
+    {
+      "id": "TKT-091",
+      "subject": "Minor UI issue",
+      "summary": "A non-critical alignment issue is visible on one application page.",
+      "department": "Application / UI",
+      "date": "2026-11-08"
+    },
+    {
+      "id": "TKT-092",
+      "subject": "Production login outage",
+      "summary": "No users can authenticate to the production application.",
+      "department": "Identity / Application",
+      "date": "2026-10-23"
+    },
+    {
+      "id": "TKT-093",
+      "subject": "Network outage",
+      "summary": "An entire office location has lost connectivity to corporate services.",
+      "department": "Network",
+      "date": "2026-10-25"
+    },
+    {
+      "id": "TKT-094",
+      "subject": "Database replication lag",
+      "summary": "The secondary database is significantly behind the primary database.",
+      "department": "Database",
+      "date": "2026-10-10"
+    },
+    {
+      "id": "TKT-095",
+      "subject": "Backup storage unavailable",
+      "summary": "The backup system cannot access its configured storage location.",
+      "department": "Backup / Storage",
+      "date": "2026-10-16"
+    },
+    {
+      "id": "TKT-096",
+      "subject": "Security policy violation",
+      "summary": "An endpoint appears to be running unauthorized software.",
+      "department": "Security",
+      "date": "2026-10-14"
+    },
+    {
+      "id": "TKT-097",
+      "subject": "Access review request",
+      "summary": "A manager requests a review of access assigned to a team member.",
+      "department": "Security / Access",
+      "date": "2026-10-10"
+    },
+    {
+      "id": "TKT-098",
+      "subject": "Internal DNS intermittent",
+      "summary": "Internal hostname resolution works intermittently and then fails.",
+      "department": "DNS / Network",
+      "date": "2026-10-15"
+    },
+    {
+      "id": "TKT-099",
+      "subject": "Server unavailable after reboot",
+      "summary": "A production server did not return to service after a scheduled reboot.",
+      "department": "Server / Infrastructure",
+      "date": "2026-10-18"
+    },
+    {
+      "id": "TKT-100",
+      "subject": "Application database unavailable",
+      "summary": "The production application is down because its database is unreachable.",
+      "department": "Database / Application",
+      "date": "2026-11-08"
+    }
+  ],
+  "standard_procedure": [
+    "The issue was first noticed during normal operations.",
+    "The reported behavior is affecting the expected service experience.",
+    "The user or team is currently unable to complete the related task normally.",
+    "The problem appears to be persistent rather than an isolated delay.",
+    "The affected service should be checked for current availability.",
+    "Recent changes to the environment should be reviewed.",
+    "Relevant system and application logs should be examined.",
+    "Network connectivity should be validated where applicable.",
+    "Authentication and authorization settings should be checked where relevant.",
+    "Recent configuration changes should be compared with the previous working state.",
+    "The scope of impact should be confirmed with the affected users.",
+    "The exact time of occurrence should be captured for investigation.",
+    "Any related error messages should be recorded.",
+    "The support team should verify whether other users are experiencing the same behavior.",
+    "Dependencies associated with the affected service should be reviewed.",
+    "Monitoring alerts should be checked for corresponding events.",
+    "System resource utilization should be reviewed for unusual activity.",
+    "Recent deployments, updates, or maintenance activities should be considered.",
+    "The issue should be reproduced where possible in a controlled manner.",
+    "A suitable workaround should be identified if the issue continues.",
+    "The affected configuration should be validated against the approved settings.",
+    "Any relevant access, policy, or permission rules should be reviewed.",
+    "Evidence collected during troubleshooting should be documented.",
+    "The resolution should be tested before the ticket is closed.",
+    "The requester should be informed about investigation progress.",
+    "The support team should record the actions taken during diagnosis.",
+    "Any confirmed cause and corrective action should be noted in the ticket.",
+    "Closure should occur only after the requester confirms that normal service has been restored."
+  ]
+}

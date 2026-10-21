@@ -1,0 +1,8 @@
+{
+  "functions": {
+    "api/chat.py": {
+      "includeFiles": "data/tickets.json",
+      "maxDuration": 60
+    }
+  }
+}
